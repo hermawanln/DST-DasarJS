@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Struktur Data</title>
+</head>
+<body>
+    
+
+    
+    <script>
+        //array
+        let birds = ['kakaktua', 'pinguin', 'emprit']
+        console.log('Pemanggilan array ->', birds[2])
+
+        //object
+        let kakaktua = {
+            legs: 2,
+            color: 'blue',
+            canFly: true
+        }
+        console.log('Pemanggilan object -> ', kakaktua.canFly)    
+
+        manuks = [
+            {
+                legs: 2,
+                color: 'blue',
+                canFly: true
+            },
+            {
+                legs: 2,
+                color: 'green',
+                canFly: true
+            },
+            {
+                legs: 2,
+                color: 'green',
+                canFly: false
+            }
+        ]
+        console.log(manuks[1].canFly);
+        
+        // birds.shift()
+        console.log('array shift', manuks);
+
+        // birds.unshift({})
+        console.log('array unshift', manuks);
+        
+        let arrayBirdColor = manuks.map(item => {
+            return item.color
+        })
+
+        //timeout (contoh asyncronous)
+        console.log('warna warna burung', arrayBirdColor);
+        setTimeout(() => {
+            console.log('Hermawan');
+        }, 5000); //5000 adalah 5 detik
+        console.log('loading...');
+        
+    </script>
+</body>
+</html>

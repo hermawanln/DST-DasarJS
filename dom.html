@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar DOM</title>
+</head>
+<body>
+    <h1>SINAU DOM</h1>
+    <div id="score">
+        <p>
+            0
+        </p>
+    </div>
+    <button id="btnPlus">+</button>
+    <button onmouseover="alert('daerah terlarang')" onclick="onClickBtnMin()">-</button>    
+    
+    <script>
+        console.log('Ayo sinau DOM');
+        let txtScore = document.getElementById('score')
+        let btnPlus = document.getElementById('btnPlus')   
+        let btnMin = document.getElementById('btnMin')                     
+        // console.log('score sebelum', score.innerHTML);
+        // score.innerHTML = '<a href="https://github.com/hermawanln">hermawanln</a>'
+        // console.log('score sesudah', score.innerHTML);
+
+        let scoreChild = txtScore.childNodes
+        console.log('score', scoreChild[1].innerHTML);
+
+        let score = 99
+        txtScore.innerHTML = score;
+
+        function onClickBtnPlus () {
+            console.log('hore nambah');
+            txtScore.innerHTML = ++score;   
+        }
+        btnPlus.addEventListener('click', onClickBtnPlus)
+        
+        function onClickBtnMin () {
+            console.log('hore ngurang');
+            txtScore.innerHTML = --score;   
+        }
+        // btnMin.addEventListener('click', onClickBtnMin)        
+    </script>
+</body>
+</html>
