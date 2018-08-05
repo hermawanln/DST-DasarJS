@@ -5,13 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Belajar JS, 4 Agustus 2018</title>
+    
 </head>
 <body>
     <!-- Vira Code font family ngog nggawe != dadi icon tidak sama dengan -->
     <marquee behavior="" direction="">Selamat datang, Hermawan. Good Luck !</marquee>
     hello world
+    <div id="quote"><b>INI QUOTES</b></div>
 
+
+
+    
     <script src="./js/dasar.js"></script>
     <script src="./js/fungsi.js"></script>    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>    
+    <script>
+        
+        let quote = 'Belum ada quotes.'
+
+        // AXIOS
+        // => if use npm, use this to consume axios, but no need if u use CDN
+        // const axios = require('axios');
+
+        // Make a request for a user with a given ID
+        axios.get('http://fortunecookieapi.herokuapp.com/v1/cookie') //URL
+        .then(function (response) {
+            // handle success
+            quote = response.data[0].fortune.message;   
+            document.getElementById('quote').innerHTML = quote 
+            console.log(quote);
+                  
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+        .then(function () {
+            // always executed
+        });
+
+        console.log(quote);
+
+    </script>
 </body>
 </html>

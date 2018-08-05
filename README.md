@@ -1,6 +1,6 @@
-##UPDATE NPM
+## UPDATE NPM
 ``` bash
 $npm install -g npm`
 ```
-##AJAX
+## AJAX
 Adalah sebuah teknik untuk mengakses web server
