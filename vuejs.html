@@ -7,10 +7,38 @@
     <title>Vue JS</title>
 </head>
 <body>
-    <h1>belajar vuejs</h1>
-    
+    <h1>Belajar Vuejs</h1>
+
     <div id="app">
+
     {{ message }}
+    <!-- <br>
+    {{ acara }} -->
+    <br>
+    <input type="text" v-model="message">
+
+    <div style="margin:32px"></div>
+    <strong>Lakon</strong>
+    <div>
+        {{ score }}
+    </div>
+    <button :disabled="score < 1 || isGameEnd" @click="score--">-</button> <!-- score++ atau ++score untuk menambah langsung akses data  -->
+    <button :disabled="isGameEnd" @click="tambahScore('score')">+</button> <!-- pakai methods jika kondisi banyak atau memungkinkan -->
+    <br><br>
+    <strong>Musuh</strong>
+    <div>
+        {{ scoreMusuh }}
+    </div>
+    <button :disabled="scoreMusuh < 1 || isGameEnd" @click="kurangScore('scoreMusuh')">-</button> <!-- score++ atau ++score untuk menambah langsung akses data  -->
+    <button :disabled="isGameEnd" @click="tambahScore('scoreMusuh')">+</button> <!-- pakai methods jika kondisi banyak atau memungkinkan -->
+    
+    <div style="margin:32px"></div>
+    <div>
+            <strong>Selisihnya -> {{ selisih }}</strong>
+        </div>
+    <div>
+        <strong>Pemenangnya adalah {{ winner }}</strong>
+    </div>    
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>    
@@ -18,7 +46,50 @@
     var app = new Vue({
         el: '#app',
         data: {
-        message: 'Hello Vue!'
+        message: 'Hello Vue!',
+        acara: 'DST ke 2. Minggu, 5 Agustus 2018',
+        score: 0,
+        scoreMusuh: 0
+        },
+        //melihat perubahan data pake watch (reactive)
+        watch: {
+            score () {
+                if (this.score > 9) {
+                    
+                    alert('Lakon Menang!')
+                }
+            },
+            scoreMusuh () {
+                if (this.scoreMusuh > 9) {
+                    alert('Musuh Menang!')
+                }
+            }
+        },
+        //computed nge return sesuatu
+        computed: {
+            winner () {
+                if (this.score > this.scoreMusuh) {
+                    return 'Lakon';
+                } else if (this.score == this.scoreMusuh) {
+                    return 'Imbang';  
+                } else {
+                    return 'Musuh';
+                }
+            },
+            selisih () {
+                return Math.abs(this.score - this.scoreMusuh);
+            },
+            isGameEnd () {
+                return this.score > 9 || this.scoreMusuh > 9
+            }
+        },
+        methods: {
+            tambahScore (target) {
+                this[target] += 1     //+= adalah kondisi ditambah 1
+            },
+            kurangScore (target) {
+                --this[target]
+            }
         }
     })
     </script>
